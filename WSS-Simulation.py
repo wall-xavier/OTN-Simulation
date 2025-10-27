@@ -1,4 +1,7 @@
 import numpy as nm
+import os
+import platform
+import time
 
 # Constants
 
@@ -10,7 +13,8 @@ GRATING_ORDER = 1
 INPUT_ANGLE_DEG = 10 # Angle of the light as it hits the grating
 
 # Physical Constants
-FOCAL_LENGTH_MM = 100
+FOCAL_LENGTH_X_MM = 100
+FOCAL_LENGTH_Y_MM = 95
 PORT_PITCH_MM = .25 # Distance between output ports 250 Micrometers
 LCOS_PIXEL_PITCH_MM = .008 # Size of one LCoS pixel 8 Micrometers
 
@@ -19,7 +23,7 @@ theta_i_rad = nm.deg2rad(INPUT_ANGLE_DEG)
 
 
 # Site Constants
-sites = ["Las Vegas", "Salt Lake City", "Los Angeles" , "Dallas" , "Billings", "Casper", "Santa Fe", "Denver", "Local"]
+sites = ["Las Vegas", "Salt Lake City", "Los Angeles" , "Dallas" , "Billings", "Casper", "Santa Fe", "Denver", "Local (Drop At This ROADM)"]
 
 
 # WSS Functionality
@@ -45,7 +49,7 @@ def calculate_dispersion_position(wavelength_nm):
     theta_d_rad_center = nm.arcsin(sin_theta_d_center)
 
     # Calculate the spatial position of the wavelength
-    x_position_nm = FOCAL_LENGTH_MM * (theta_d_rad - theta_d_rad_center)
+    x_position_nm = FOCAL_LENGTH_X_MM * (theta_d_rad - theta_d_rad_center)
 
     return x_position_nm , nm.rad2deg(theta_d_rad)
 
@@ -56,7 +60,7 @@ def calculate_lcos_steering(wavelength_nm, target_port_index):
     # Calculate the final beam angle
     # Assuming the lens is one focal length away from the output ports
     target_position_mm = target_port_index * PORT_PITCH_MM
-    theta_out_rad = target_position_mm / FOCAL_LENGTH_MM
+    theta_out_rad = target_position_mm / FOCAL_LENGTH_Y_MM
 
     # LCoS Steers the beam to make the beam angle match the final required angle
     theta_lcos_rad = theta_out_rad
@@ -94,7 +98,7 @@ def run_wss_simulation(wavelength, port_num):
     
     print(f"---- 1: Grating Dispersion: (Separating Wavelengths) ----")
     print(f"-> Input Grating Angle (Grating-In): {INPUT_ANGLE_DEG:.2f}°")
-    print(f"-> Diffraction Angle (Grading-Out): {theta_d_deg:.4f}°")
+    print(f"-> Diffraction Angle (Grating-Out): {theta_d_deg:.4f}°")
     print(f"-> LCoS Landing Position (x-position): {x_pos:.4f}mm")
 
     # LCoS Steering
@@ -112,11 +116,61 @@ def run_wss_simulation(wavelength, port_num):
     print(f"-> to its output port at P{port_num} (Port-Index {port_index}).")
     print("-"*50)
 
+# Quick function to make screen more readable
+def clear_screen():
 
-run_wss_simulation(wavelength=1550.0, port_num=5)
+    try:
+        # Detect the operating system
+        current_os = platform.system()
+        
+        if current_os == "Windows":
+            os.system('cls')  # Windows clear command
+        else:
+            os.system('clear')  # Linux/macOS clear command
+    except Exception as e:
+        print(f"Error clearing screen: {e}")
 
-run_wss_simulation(wavelength=1550.0, port_num=9)
+choice = 0
 
-run_wss_simulation(wavelength=1550.0, port_num=1)
+while(choice != 2):
 
-run_wss_simulation(wavelength=1548.0, port_num=7)
+    print("-"*25 + "Welcome to the WSS" + "-"*25)
+    print("The purpose of this program is to simulate the inner workings")
+    print("of a Wavelength Selective Switch. This is an LCoS based system.")
+    print("The output will contain steering angles, and diffraction angles")
+    print("all included to give you a better understanding of what is going on")
+    print("insde of a WSS.")
+
+    print()
+
+    print("Please select an option:")
+    print("-"*20)
+    print("1: Simulate the WSS Switching Processes")
+    print("2: Exit")
+    choice = int(input("Selection >> "))
+
+    if choice == 1:
+
+        print("In order to route your photonic path we will need a wavelength")
+        print("and a port that you would like to go to.")
+        print("The allowed wavelengths you can use are in the range of 1530nm - 1565nm")
+        print("The sites we can send to are:")
+        i = 1
+        for site in sites:
+
+            print(f"P{i}. {site}")
+            i += 1
+
+        print("Please select your wavelength, numbers only (EX. 1547.58)")
+        wavelength = float(input("Wavelength >> "))
+
+        print("Please choose a site to send the traffic to number only (EX. 3)")
+        port_selection = int(input("Site Selection >> "))
+
+        print("Thank you now simulating wave switching...")
+        time.sleep(5)
+
+        clear_screen()
+
+        run_wss_simulation(wavelength, port_selection)
+
