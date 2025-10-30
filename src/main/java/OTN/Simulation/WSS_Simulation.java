@@ -19,7 +19,7 @@ public class WSS_Simulation{
       
       // Enter Wavelength to be switched
       
-      System.out.println("\n\n Please provide a wavelength that you would like to switch: ");
+      System.out.println("\n\n Please provide a wavelength between in the C-Band (1530nm-1565nm) that you would like to switch: ");
       System.out.print("\tWavelength (Numbers only in NM) >> ");
       wavelength = input.nextDouble();
       
