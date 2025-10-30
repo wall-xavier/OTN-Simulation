@@ -1,4 +1,6 @@
-# WSS Simulation
-A Java program created to simulate the inner workings of an LCoS (Liquid Crystal on Silicon) based WSS (Wavelength Selective Switch)
+# OTN Simulation
+The purpose of this program is to show the flow of photonic signals as they traverse an OTN (Optical Transport Network)
 
-In order to run this program you will need to install java.
+This simulation will follow a photonic signal through all components of the OTN showing things like, diffraction angles, loss, beam steering, and much more.
+
+This is a work in progress, I am working to bring in support for most main components of an OTN system, eventaully bringing it all together to create a fully functioning optical network.
