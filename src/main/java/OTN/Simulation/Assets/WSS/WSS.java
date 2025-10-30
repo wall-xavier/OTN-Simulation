@@ -1,3 +1,5 @@
+package OTN.Simulation.Assets.WSS;
+
 import java.util.*;
 
 public class WSS{
@@ -7,7 +9,7 @@ public class WSS{
    final int GRATING_LINES_PER_MM = 500;
    final double GRATING_PITCH_NM = 1e6 / GRATING_LINES_PER_MM;
    final int GRATING_ORDER = 1;
-   final int INPUT_ANGLE_DEG = 10; // Angle the light hits the grating
+   public final int INPUT_ANGLE_DEG = 10; // Angle the light hits the grating
 
    // Physical WSS Constants
    final int FOCAL_LENGTH_X_MM = 100; // Focal length between the grating and the first imaging optic
@@ -33,7 +35,7 @@ public class WSS{
    // Display the ports and sites they are assigned to
    public void getSiteLayout(){
    
-      System.out.println("This WSS has " + ports + " amount of ports, these ports have been assigned to: ");
+      System.out.println("This WSS has " + ports + " port(s), these ports have been assigned to: ");
       
       for(int i = 0; i <= sites.length - 1; i++){
          int portNumber = i + 1;
