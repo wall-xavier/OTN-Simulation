@@ -1,4 +1,4 @@
-package OTN.Simluation;
+package OTN.Simulation;
 import OTN.Simulation.Assets.WSS.WSS;
 import OTN.Simulation.Assets.Light.PhotonicPath;
 import java.util.*;
