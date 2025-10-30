@@ -23,7 +23,7 @@ public class WSS{
    String [] sites = new String[ports];
    
    // Set amount of ports and port names
-   public void setSiteLayout(String[] toSetSites, int portNum){
+   public WSS(String[] toSetSites, int portNum){
       
       ports = portNum;
       sites = toSetSites;
