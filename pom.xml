@@ -5,14 +5,14 @@
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.otn.simulation</groupId>
+    <groupId>com.otn</groupId>
     <artifactId>otn-simulation-project</artifactId>
     <version>1.0</version>
     
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <mainClass>OTN.Simulation.WSS_Simulation</mainClass> 
+        <mainClass>OTN.OTNSimulation</mainClass> 
     </properties>
 
     <build>
