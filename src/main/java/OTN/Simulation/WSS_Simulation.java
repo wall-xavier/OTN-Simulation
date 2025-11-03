@@ -88,7 +88,7 @@ public class WSS_Simulation{
       System.out.println("-------------------------------------------------------");
       System.out.println("                      Thank You                        ");
       System.out.println("-------------------------------------------------------");
-     
+      input.close();
    }
 
 }
