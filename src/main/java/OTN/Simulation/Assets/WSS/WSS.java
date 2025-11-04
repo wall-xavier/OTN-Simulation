@@ -8,7 +8,7 @@ public class WSS{
     // Calculate grating pitch (Lambda) in nm (1 meter = 10^9 nm, 1 mm = 10^6 nm)
     final double GRATING_PITCH_NM = 1e6 / GRATING_LINES_PER_MM;
     final int GRATING_ORDER = 1;
-    public final int INPUT_ANGLE_DEG = 10; // Angle the light hits the grating
+    public final double INPUT_ANGLE_DEG = 10; // Angle the light hits the grating
 
     // Physical WSS Constants (in mm)
     final int FOCAL_LENGTH_X_MM = 100; // Focal length (Grating to LCoS)

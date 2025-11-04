@@ -1,5 +1,6 @@
 package OTN;
 
+import OTN.Simulation.WSS_Simulation;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -81,13 +82,8 @@ public class WelcomeScreen extends JFrame {
         continueButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(WelcomeScreen.this, 
-                                              "Continuing to the main project...", 
-                                              "Action", 
-                                              JOptionPane.INFORMATION_MESSAGE);
-                // In a real application, you would close this frame and open the next one here.
-                // dispose();
-                // new MainApplicationFrame().setVisible(true);
+                dispose();
+                new WSS_Simulation().setVisible(true);
             }
         });
 
