@@ -49,8 +49,8 @@ public class WSS_Simulation extends JFrame {
         header.setFont(new Font("SansSerif", Font.BOLD, 24));
         header.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         header.setOpaque(true);
-        header.setBackground(new Color(30, 41, 59)); // Dark background
-        header.setForeground(new Color(52, 211, 153)); // Light green text
+        header.setBackground(new Color(183, 43, 38)); // Dark background
+        header.setForeground(new Color(0,0,0)); // Light green text
         add(header, BorderLayout.NORTH);
 
         showStep1();
