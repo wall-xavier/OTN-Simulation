@@ -1,7 +1,9 @@
 package OTN.Simulation;
 
-import OTN.Simulation.Assets.WSS.WSS;
 import javax.swing.*;
+
+import OTN.Simulation.Assets.Cards.WSS.WSS;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
