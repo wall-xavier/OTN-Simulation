@@ -1,17 +1,25 @@
 package OTN.Simulation.Assets.Cards.Transponder;
 import OTN.Simulation.Assets.Cards.Transponder.Assets.Transponder;
-import OTN.Simulation.Assets.Cards.WSS.WSS;
 
 public class TransponderCard {
     
-    final int PORTCOUNT = 16;
-    Transponder [] ports = new Transponder [PORTCOUNT];
-    WSS mappedWSS;
+    int portCount;
+    Transponder [] ports = new Transponder [portCount];
 
-    public TransponderCard(WSS toMapWSS){
+    public TransponderCard(int portCount){
 
-        mappedWSS = toMapWSS;
+        portCount = this.portCount;
+        
+        for(int i = 0; i < ports.length; i++){
+        
+            ports[i] = new Transponder(1000, true, 2);
 
+        }
+    }
+
+    public Transponder getPort(int index){
+
+        return ports[index];
     }
 
 }

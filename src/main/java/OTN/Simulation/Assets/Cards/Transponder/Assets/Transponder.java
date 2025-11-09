@@ -8,11 +8,10 @@ public class Transponder {
     double txSignalStrength_DBM;
     final double RXSENSITIVITY_DBM = -40;
 
-    public Transponder(double speed, boolean duplex, double rxSignalStrength_DBM, double txSignalStrength_DBM){
+    public Transponder(double speed, boolean duplex, double txSignalStrength_DBM){
 
         speed = this.speed;
         duplex = this.duplex;
-        rxSignalStrength_DBM = this.rxSignalStrength_DBM;
         txSignalStrength_DBM = this.txSignalStrength_DBM;
     }
 

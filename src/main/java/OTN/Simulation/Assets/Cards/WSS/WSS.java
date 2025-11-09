@@ -1,5 +1,6 @@
 package OTN.Simulation.Assets.Cards.WSS;
-
+import OTN.Simulation.Assets.Cards.Transponder.TransponderCard;
+import OTN.Simulation.Assets.Cards.WSS.Assets.WSSPort;
 public class WSS{
 
     // Optical WSS Constants
@@ -20,8 +21,10 @@ public class WSS{
     double theta_i_rad = Math.toRadians(INPUT_ANGLE_DEG);
 
     // WSS Configurable pieces
-    int ports = 0;
+    int portCount = 0;
     String [] sites = new String[0];
+    TransponderCard mappedCard = new TransponderCard(portCount);
+    WSSPort [] ports = new WSSPort[portCount];
     private final int centerPortNumber; 
 
     // Set amount of ports and port names
@@ -29,18 +32,24 @@ public class WSS{
         if (portNum < 1 || toSetSites.length != portNum) {
             throw new IllegalArgumentException("Port count must be positive and match the site array length.");
         }
-        this.ports = portNum;
-        this.sites = toSetSites;
-        this.centerPortNumber = (portNum + 1) / 2;
+        portCount = portNum;
+        sites = toSetSites;
+        centerPortNumber = (portNum + 1) / 2;
+        // Map Transponders to the WSS port
+        for(int i = 0; i < portCount; i++){
+
+            ports[i] = new WSSPort(sites[i], i, mappedCard.getPort(i));
+
+        }
     }
     
     private int getPhysicalIndex(int portNumber) {
-        return portNumber - this.centerPortNumber;
+        return portNumber - centerPortNumber;
     }
     
     // Display the ports and sites they are assigned to
     public void getSiteLayout(){
-        System.out.println("This WSS has " + ports + " port(s).");
+        System.out.println("This WSS has " + portCount + " port(s).");
         System.out.println("The physical center axis aligns with Port " + centerPortNumber + " (Physical Index 0).");
         System.out.println("----------------------------------------");
         
