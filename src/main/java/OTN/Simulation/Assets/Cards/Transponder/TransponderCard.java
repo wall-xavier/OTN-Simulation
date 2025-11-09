@@ -4,11 +4,12 @@ import OTN.Simulation.Assets.Cards.Transponder.Assets.Transponder;
 public class TransponderCard {
     
     int portCount;
-    Transponder [] ports = new Transponder [portCount];
+    Transponder [] ports;
 
     public TransponderCard(int portCount){
 
-        portCount = this.portCount;
+        this.portCount = portCount;
+        this.ports = new Transponder [portCount];
         
         for(int i = 0; i < ports.length; i++){
         
@@ -20,6 +21,7 @@ public class TransponderCard {
     public Transponder getPort(int index){
 
         return ports[index];
+
     }
 
 }

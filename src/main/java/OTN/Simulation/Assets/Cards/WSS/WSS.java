@@ -21,10 +21,8 @@ public class WSS{
     double theta_i_rad = Math.toRadians(INPUT_ANGLE_DEG);
 
     // WSS Configurable pieces
-    int portCount = 0;
+    int portCount;
     String [] sites = new String[0];
-    TransponderCard mappedCard = new TransponderCard(portCount);
-    WSSPort [] ports = new WSSPort[portCount];
     private final int centerPortNumber; 
 
     // Set amount of ports and port names
@@ -36,6 +34,8 @@ public class WSS{
         sites = toSetSites;
         centerPortNumber = (portNum + 1) / 2;
         // Map Transponders to the WSS port
+        TransponderCard mappedCard = new TransponderCard(portCount);
+        WSSPort [] ports = new WSSPort[portCount];
         for(int i = 0; i < portCount; i++){
 
             ports[i] = new WSSPort(sites[i], i, mappedCard.getPort(i));
