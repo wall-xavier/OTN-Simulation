@@ -38,4 +38,23 @@ public class Transponder {
         return txSignalStrength_DBM;
         
     }
+
+    public void setRXSignal(double rxSignal){
+
+        rxSignalStrength_DBM = rxSignal;
+
+    }
+
+    public double convertDBMToMW(double toConvert){
+
+        double converted = Math.pow(10, (toConvert/10));
+
+        return converted;
+
+    }
+
+    public void setTXSignalStrength(double signalStrength){
+
+        txSignalStrength_DBM = signalStrength;
+    }
 }

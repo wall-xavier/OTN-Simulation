@@ -13,4 +13,17 @@ public class WSSPort {
         mappedTransponder = transponderToMap;
 
     }
+
+    public double getIncomingSignalStrength(Transponder incoming){
+
+        double signalStrengthMW = incoming.convertDBMToMW(incoming.getRXSignalStrength());
+
+        return signalStrengthMW;
+    }
+
+    public void setOutgoingSignalStrength(Transponder outgoing, double signalStrength){
+
+        outgoing.setTXSignalStrength(signalStrength);
+
+    }
 }
