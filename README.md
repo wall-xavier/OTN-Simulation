@@ -6,9 +6,12 @@ This simulation will follow a photonic signal through all components of the OTN 
 This is a work in progress, I am working to bring in support for most main components of an OTN system, eventually bringing it all together to create a fully functioning optical network.
 
 ## Important Installation Note
-You will need to have maven along with OpenJDK 17 installed on your system to compile and run this program.
+This project targets Java 21 (LTS). You will need Maven and an OpenJDK 21 (or a JDK that provides Java 21) installed on your system to compile and run this program.
 
-Compile the application with:
+Steps:
+
+    # Verify Java and Maven
+    mvn -v
 
     # Compile
     mvn package

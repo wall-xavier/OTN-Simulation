@@ -10,8 +10,9 @@
     <version>1.0</version>
     
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.release>21</maven.compiler.release>
         <mainClass>OTN.OTNSimulation</mainClass> 
     </properties>
 
@@ -22,8 +23,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
+                    <!-- Use the release flag to target a specific Java release (requires corresponding JDK) -->
+                    <release>${maven.compiler.release}</release>
                 </configuration>
             </plugin>
 

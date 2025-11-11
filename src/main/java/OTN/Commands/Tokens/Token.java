@@ -2,12 +2,12 @@ package OTN.Commands.Tokens;
 
 public class Token{
 
-    enum types {
+    public enum types {
         KEYWORD,
         INTLIT,
         SEMICOLON};
 
-    types type;
+    public types type;
     String value;
 
     public Token(types type, String value){
