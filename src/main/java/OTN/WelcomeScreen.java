@@ -83,7 +83,7 @@ public class WelcomeScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new WSS_Simulation().setVisible(true);
+                new TerminalGUI().setVisible(true);
             }
         });
 
