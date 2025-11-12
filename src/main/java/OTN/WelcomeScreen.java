@@ -1,6 +1,5 @@
 package OTN;
 
-import OTN.Simulation.WSS_Simulation;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

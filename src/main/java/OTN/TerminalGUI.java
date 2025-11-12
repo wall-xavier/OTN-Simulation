@@ -141,15 +141,4 @@ public class TerminalGUI extends JFrame implements ActionListener {
         outputArea.append(text);
         outputArea.setCaretPosition(outputArea.getDocument().getLength());
     }
-
-    /* Main method to run the application
-    public static void main(String[] args) {
-        // Swing components must be created and modified on the Event Dispatch Thread (EDT)
-        SwingUtilities.invokeLater(() -> {
-            TerminalGUI gui = new TerminalGUI();
-            gui.setVisible(true);
-        });
-    }
-
-    */
 }

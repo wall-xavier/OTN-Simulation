@@ -5,6 +5,8 @@ import java.util.List;
 import OTN.Commands.Tokens.Tokenizer;
 import OTN.System.FileSystem.FileSystemSetup;
 import OTN.Commands.Tokens.Token;
+// import OTN.Commands.Parse.Parser;
+
 
 public class Boot {
 
@@ -13,7 +15,8 @@ public class Boot {
     public Boot(){
         
         String config = loadConfig();
-        TokenizeConfig(config);
+        List<Token> tokens = TokenizeConfig(config);
+        System.out.println(tokens);
 
     }
 
@@ -33,17 +36,13 @@ public class Boot {
         return config;
     }
 
-    public void TokenizeConfig(String preToken){
+    public List <Token> TokenizeConfig(String preToken){
 
         Tokenizer toTokenize = new Tokenizer(preToken);
 
         List<Token> tokens = toTokenize.tokenize();
 
-        System.out.println("--- TOKEN STREAM ---");
-        
-        System.out.println(tokens); 
-
-        System.out.println("--------------------");
+        return tokens;
     }
 
 }

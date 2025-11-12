@@ -81,6 +81,7 @@ public class Parser {
     }
 }
 
+    /*
     private Token peek(int peekAhead){
 
         int peekIndex = index + peekAhead;
@@ -94,6 +95,7 @@ public class Parser {
        
         }
     }
+    */
 
     private Token consume(){
 

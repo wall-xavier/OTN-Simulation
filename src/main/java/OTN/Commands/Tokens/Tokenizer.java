@@ -98,6 +98,7 @@ public class Tokenizer {
 
     }
 
+    /*
     private Character peek(int peekAhead){
 
         if(index + peekAhead >= src.length()){
@@ -110,6 +111,7 @@ public class Tokenizer {
         }
 
     }
+    */
 
     private char consume(){
 
