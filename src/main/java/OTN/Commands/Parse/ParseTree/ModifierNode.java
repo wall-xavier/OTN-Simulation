@@ -4,7 +4,7 @@ import OTN.Commands.Tokens.Token;
 
 public class ModifierNode {
     
-    Token int_lit;
+    public Token int_lit;
 
     public ModifierNode(Token lit){
 

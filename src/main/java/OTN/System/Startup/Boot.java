@@ -5,7 +5,9 @@ import java.util.List;
 import OTN.Commands.Tokens.Tokenizer;
 import OTN.System.FileSystem.FileSystemSetup;
 import OTN.Commands.Tokens.Token;
-// import OTN.Commands.Parse.Parser;
+import OTN.Commands.Parse.Parser;
+import OTN.Commands.Parse.ParseTree.DeviceNode;
+import OTN.Commands.CommandGeneration.*;
 
 
 public class Boot {
@@ -16,7 +18,10 @@ public class Boot {
         
         String config = loadConfig();
         List<Token> tokens = TokenizeConfig(config);
-        System.out.println(tokens);
+        Parser parser = new Parser(tokens);
+        DeviceNode tree = parser.parse();
+        CommandGenerator generate = new CommandGenerator(tree);
+        generate.generator();
 
     }
 
@@ -44,5 +49,4 @@ public class Boot {
 
         return tokens;
     }
-
 }

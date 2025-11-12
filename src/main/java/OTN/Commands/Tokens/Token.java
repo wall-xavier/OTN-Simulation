@@ -8,7 +8,7 @@ public class Token{
         SEMICOLON};
 
     public types type;
-    String value;
+    public String value;
 
     public Token(types type, String value){
 
