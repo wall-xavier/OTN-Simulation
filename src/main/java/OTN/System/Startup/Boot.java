@@ -18,7 +18,7 @@ import OTN.Commands.Tokens.Tokenizer;
 import OTN.System.FileSystem.FileSystemSetup;
 import OTN.Commands.Tokens.Token;
 import OTN.Commands.Parse.Parser;
-import OTN.Commands.Parse.ParseTree.DeviceNode;
+import OTN.Commands.Parse.ParseTree.StatementNode;
 import OTN.Commands.CommandGeneration.*;
 
 
@@ -31,7 +31,7 @@ public class Boot {
         String config = loadConfig();
         List<Token> tokens = TokenizeConfig(config);
         Parser parser = new Parser(tokens);
-        DeviceNode tree = parser.parse();
+        List<StatementNode> tree = parser.parse();
         CommandGenerator generate = new CommandGenerator(tree);
         generate.generator();
 

@@ -52,21 +52,18 @@ public class Tokenizer {
             String value = buffer.toString();
             value = value.toUpperCase();
             
-            if (value.equals("ROADM") || value.equals("WSS") || value.equals("PORT") || value.equals("TRANSPONDER_CARD") || value.equals("TRANSPONDER") || value.equals("FIBER")) {
-
-                tokens.add(new Token(Token.types.OBJECT, value));
-            
-            } else if (value.equals("ADD") || value.equals("MODIFY") || value.equals("REMOVE")){
-        
-                tokens.add(new Token(Token.types.ACTION, value));
-
-            } else{
-
-                tokens.add(new Token(Token.types.VALUE, value));
-            
+            switch (value) {
+                case "ROADM", "WSS", "PORT", "TRANSPONDER_CARD", "TRANSPONDER", "FIBER" -> tokens.add(new Token(Token.types.OBJECT, value));
+                case "ADD", "MODIFY", "REMOVE" , "CREATE" -> tokens.add(new Token(Token.types.ACTION, value));
+                default -> tokens.add(new Token(Token.types.VALUE, value));
             }
             
             buffer.setLength(0); 
+        }
+        else {
+            
+            consume();
+        
         }
     }
 
@@ -75,7 +72,7 @@ public class Tokenizer {
 
     private Character peek(){
 
-        if(index + 1 >= src.length()){
+        if(index >= src.length()){
 
             return null;
 

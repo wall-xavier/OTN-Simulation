@@ -12,23 +12,27 @@ You should have received a copy of the GNU General Public License along with OTN
 
 package OTN.Commands.CommandGeneration;
 
-import OTN.Commands.Parse.ParseTree.DeviceNode;
+import OTN.Commands.Parse.ParseTree.StatementNode;
+import java.util.List;
 
 
 public class CommandGenerator {
     
-    DeviceNode rootNode;
+    List <StatementNode> StatementNodes;
 
-    public CommandGenerator(DeviceNode node){
+    public CommandGenerator(List <StatementNode> StatementNodes){
 
-        rootNode = node;
+        this.StatementNodes = StatementNodes;
 
     }
 
     public void generator(){
 
-        System.out.println("Created a WSS:");
-        System.out.println("WSS " + rootNode.modifier.int_lit.value);
+        if(StatementNodes != null && !StatementNodes.isEmpty()){
+            System.out.println("Input: " + StatementNodes.get(0).deviceNode.object.value + " " + StatementNodes.get(0).actionNode.actionToken.value + " " + StatementNodes.get(0).objectNode.object.value + " " + StatementNodes.get(0).objectNameNode.name.value);
+        } else {
+            System.out.println("No statements parsed.");
+        }
 
     }
 }

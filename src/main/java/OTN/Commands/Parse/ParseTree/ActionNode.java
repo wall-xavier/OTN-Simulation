@@ -11,17 +11,17 @@ You should have received a copy of the GNU General Public License along with OTN
 */
 
 package OTN.Commands.Parse.ParseTree;
-
 import OTN.Commands.Tokens.Token;
 
-public class ModifierNode {
-    
-    public Token int_lit;
 
-    public ModifierNode(Token lit){
+public class ActionNode {
 
-        int_lit = lit;
-        
+    public Token actionToken;
+
+    public ActionNode(Token actionToken){
+
+        this.actionToken = actionToken;
+
     }
-
+    
 }

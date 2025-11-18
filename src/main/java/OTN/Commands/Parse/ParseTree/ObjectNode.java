@@ -11,14 +11,15 @@ You should have received a copy of the GNU General Public License along with OTN
 */
 
 package OTN.Commands.Parse.ParseTree;
+import OTN.Commands.Tokens.Token;
 
-public class DeviceNode {
+public class ObjectNode {
     
-    public ModifierNode modifier;
+    public Token object;
 
-    public DeviceNode(ModifierNode mod){
+    public ObjectNode(Token object){
 
-        modifier = mod;
+        this.object = object;
 
     }
 

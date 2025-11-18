@@ -15,6 +15,7 @@ package OTN.Commands.Parse;
 import OTN.Commands.Tokens.Token;
 import OTN.Commands.Parse.ParseTree.*;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Parser {
 
@@ -27,13 +28,13 @@ public class Parser {
 
     }
 
-    public ModifierNode parseMod(){
+    public ActionNode parseAction(){
 
-        if(peek() != null && peek().type == Token.types.INTLIT){
+        if(peek() != null && peek().type == Token.types.ACTION){
 
-            ModifierNode modNode = new ModifierNode(consume());
+            ActionNode actionNode = new ActionNode(consume());
 
-            return modNode;
+            return actionNode;
 
         }
 
@@ -44,39 +45,104 @@ public class Parser {
         }
     }
 
-    public DeviceNode parse(){
+    public ObjectNode parseObject(){
 
-        DeviceNode devNode = null;
+        if(peek() != null && peek().type == Token.types.OBJECT){
 
-        while(peek() != null){
+            ObjectNode objectNode = new ObjectNode(consume());
 
-            if(peek().type == Token.types.KEYWORD){
-                consume();
-                ModifierNode modNode = parseMod();
-                if(modNode != null){
-                    devNode = new DeviceNode(modNode);
-                }
-
-                else{
-                    System.out.println("Error in parsing.");
-                }
-
-                if(peek() != null && peek().type == Token.types.SEMICOLON){
-
-                    consume();
-
-                }
-
-                else{
-
-                    System.out.println("Error in parsing.");
-
-                }
-            }
+            return objectNode;
 
         }
 
-        return devNode;
+        else{
+
+            return null;
+
+        }
+    }
+
+    public ObjectNameNode parseObjectName(){
+
+        if(peek() != null && peek().type == Token.types.VALUE){
+
+            ObjectNameNode objectNameNode = new ObjectNameNode(consume());
+
+            return objectNameNode;
+
+        }
+
+        else{
+
+            return null;
+
+        }
+    }
+
+    public ValueNode parseValue(){
+
+        if(peek() != null && peek().type == Token.types.VALUE){
+
+            ValueNode valueNode = new ValueNode(consume());
+
+            return valueNode;
+
+        }
+
+        else{
+
+            return null;
+
+        }
+    }
+
+    public List<StatementNode> parse(){
+
+        List<StatementNode> statementNodes = new ArrayList<>();
+
+        while(peek() != null){
+
+            ObjectNode deviceNode = null;
+            ActionNode actionNode = null;
+            ObjectNode objectNode = null;
+            ObjectNameNode objectName = null;
+            ValueNode value = null;
+
+            if(peek() != null && peek().type == Token.types.OBJECT){
+                deviceNode = parseObject();
+            }
+            
+            if(peek() != null && peek().type == Token.types.ACTION){
+                actionNode = parseAction();
+            }
+            
+            if(peek() != null && peek().type == Token.types.OBJECT){
+                objectNode = parseObject();
+            }
+            
+            if(peek() != null && peek().type == Token.types.VALUE){
+                objectName = parseObjectName();
+            }
+            
+            if(peek() != null && peek().type == Token.types.VALUE){
+                value = parseValue();
+            }
+            
+            if(deviceNode != null && actionNode != null && objectNode != null && objectName != null){
+                if(value != null){
+                    statementNodes.add(new StatementNode(deviceNode, actionNode, objectNode, objectName, value));
+                } else {
+                    statementNodes.add(new StatementNode(deviceNode, actionNode, objectNode, objectName));
+                }
+            } else {
+                if(peek() != null) {
+                    consume();
+                }
+            }
+            
+        }
+
+        return statementNodes;
 
     }
 
@@ -92,22 +158,6 @@ public class Parser {
     
     }
 }
-
-    /*
-    private Token peek(int peekAhead){
-
-        int peekIndex = index + peekAhead;
-        
-        if (peekIndex >= tokens.size()){
-            return null;
-        } 
-        else {
-    
-            return tokens.get(peekIndex); 
-       
-        }
-    }
-    */
 
     private Token consume(){
 
