@@ -34,8 +34,9 @@ public class Tokenizer {
     while (peek() != null) {
 
         if (Character.isWhitespace(peek())) {
+        
             consume();
-            continue;
+        
         }
         
         else if (Character.isAlphabetic(peek())) {
@@ -43,54 +44,29 @@ public class Tokenizer {
             buffer.append(consume()); 
             
             while (peek() != null && Character.isLetterOrDigit(peek())) {
+            
                 buffer.append(consume());
+            
             }
 
             String value = buffer.toString();
+            value = value.toUpperCase();
             
-            if (value.equals("WSS")) {
+            if (value.equals("ROADM") || value.equals("WSS") || value.equals("PORT") || value.equals("TRANSPONDER_CARD") || value.equals("TRANSPONDER") || value.equals("FIBER")) {
 
-                tokens.add(new Token(Token.types.KEYWORD, value));
+                tokens.add(new Token(Token.types.OBJECT, value));
             
-            } else {
+            } else if (value.equals("ADD") || value.equals("MODIFY") || value.equals("REMOVE")){
         
-                System.out.println("Invalid Identifier/Syntax: " + value);
-                buffer.setLength(0);
-                break; 
+                tokens.add(new Token(Token.types.ACTION, value));
+
+            } else{
+
+                tokens.add(new Token(Token.types.VALUE, value));
+            
             }
             
             buffer.setLength(0); 
-            continue;
-        }
-
-        else if (Character.isDigit(peek())) {
-            
-            buffer.append(consume());
-            
-            while (peek() != null && Character.isDigit(peek())) {
-             
-                buffer.append(consume());
-            
-            }
-
-            
-            tokens.add(new Token(Token.types.INTLIT, buffer.toString()));
-            buffer.setLength(0);
-            continue;
-       
-        }
-
-        else if (peek() == ';') {
-            
-            tokens.add(new Token(Token.types.SEMICOLON, ";"));
-            consume();
-            continue;
-       
-        }
-
-        else {
-            System.out.println("Syntax Error! Unrecognized character: " + peek());
-            consume();
         }
     }
 
@@ -109,21 +85,6 @@ public class Tokenizer {
         }
 
     }
-
-    /*
-    private Character peek(int peekAhead){
-
-        if(index + peekAhead >= src.length()){
-
-            return null;
-
-        } else{
-
-            return src.charAt(index);
-        }
-
-    }
-    */
 
     private char consume(){
 

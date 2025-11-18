@@ -6,20 +6,9 @@ $$
     [\text{Statement}] &\to
 
     \begin{cases}
-        [\text{Device}] [\text{Action}] [\text{Object}] [\text{Object Name}] [\text{*Optional* Value}]\\
+        [\text{Object}] [\text{Action}] [\text{Object}] [\text{Object Name}] [\text{*Optional* Value}]\\
         [\text{End}] \\
     \end{cases} \\
-
-    [\text{Device}] &\to
-
-    \begin{cases}
-        [\text{ROADM}] \\
-        [\text{WSS}] \\
-        [\text{Port}] \\
-        [\text{Transponder Card}]\\
-        [\text{Transponder}]\\
-        [\text{Fiber}] \\
-    \end{cases}\\
 
     [\text{Action}] &\to
 

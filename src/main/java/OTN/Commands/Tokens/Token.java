@@ -15,9 +15,9 @@ package OTN.Commands.Tokens;
 public class Token{
 
     public enum types {
-        KEYWORD,
-        INTLIT,
-        SEMICOLON};
+        ACTION,
+        OBJECT,
+        VALUE};
 
     public types type;
     public String value;
