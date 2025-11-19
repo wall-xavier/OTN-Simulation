@@ -104,6 +104,7 @@ public class Parser {
 
             ObjectNode deviceNode = null;
             ActionNode actionNode = null;
+            ObjectNameNode deviceName = null;
             ObjectNode objectNode = null;
             ObjectNameNode objectName = null;
             ValueNode value = null;
@@ -118,12 +119,19 @@ public class Parser {
                 consume(); 
                 
                 if(deviceNode != null){
-                    statementNodes.add(new StatementNode(deviceNode));
+                    statementNodes.add(new StatementNode(deviceNode, StatementNode.types.HELP));
+                }
+                else{
+                    statementNodes.add(new StatementNode(StatementNode.types.HELP));
                 }
             }
 
             else if(peek() != null && peek().type == Token.types.ACTION){
                 actionNode = parseAction();
+
+                if(peek() != null && peek().type == Token.types.VALUE){
+                    deviceName = parseObjectName();
+                }
                 
                 if(peek() != null && peek().type == Token.types.OBJECT){
                     objectNode = parseObject();
@@ -139,13 +147,13 @@ public class Parser {
                 
                 if(deviceNode != null && actionNode != null && objectNode != null && objectName != null){
                         if(value != null){
-                            statementNodes.add(new StatementNode(deviceNode, actionNode, objectNode, objectName, value));
+                            statementNodes.add(new StatementNode(deviceNode, actionNode, deviceName, objectNode, objectName, value));
                         } else {
-                            statementNodes.add(new StatementNode(deviceNode, actionNode, objectNode, objectName));
+                            statementNodes.add(new StatementNode(deviceNode, actionNode, deviceName, objectNode, objectName));
                         }
-                    } else if(deviceNode != null) {
-                        statementNodes.add(new StatementNode(deviceNode));
-                    } else {
+                    }
+                    
+                    else {
     
                         if(peek() != null) {
                             consume();

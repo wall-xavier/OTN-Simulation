@@ -16,6 +16,7 @@ public class StatementNode {
     
     public ObjectNode deviceNode;
     public ActionNode actionNode;
+    public ObjectNameNode deviceName;
     public ObjectNode objectNode;
     public ObjectNameNode objectNameNode;
     public ValueNode valueNode;
@@ -27,31 +28,40 @@ public class StatementNode {
 
     public types type;
 
-    public StatementNode(ObjectNode device, ActionNode action, ObjectNode object, ObjectNameNode name, ValueNode val){
+    public StatementNode(ObjectNode device, ActionNode action, ObjectNameNode devName, ObjectNode object, ObjectNameNode name, ValueNode val){
 
+        type = types.STATEMENT;
         deviceNode = device;
         actionNode = action;
+        deviceName = devName;
         objectNode = object;
         objectNameNode = name;
         valueNode = val;
 
     }
 
-    public StatementNode(ObjectNode device, ActionNode action, ObjectNode object, ObjectNameNode name){
+    public StatementNode(ObjectNode device, ActionNode action, ObjectNameNode devName, ObjectNode object, ObjectNameNode name){
 
         type = types.STATEMENT;
         deviceNode = device;
         actionNode = action;
+        deviceName = devName;
         objectNode = object;
         objectNameNode = name;
         valueNode = null;
 
     }
 
-    public StatementNode(ObjectNode device){
+    public StatementNode(ObjectNode device, types type){
 
         deviceNode = device;
-        type = types.HELP;
+        this.type = type;
+
+    }
+
+    public StatementNode(types type){
+
+        this.type = type;
 
     }
 

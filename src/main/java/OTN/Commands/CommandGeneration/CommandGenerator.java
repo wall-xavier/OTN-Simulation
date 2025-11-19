@@ -34,13 +34,20 @@ public class CommandGenerator {
             
                 StatementNode stmt = StatementNodes.get(i);
             
-                if(stmt.type == StatementNode.types.HELP){
+                if(stmt.type == StatementNode.types.HELP && stmt.deviceNode != null){
             
                     System.out.println("Input: " + stmt.deviceNode.object.value + " HELP");
-                } 
+                }
+
+                else if(stmt.type == StatementNode.types.HELP){
+
+                    System.out.println("Displaying General Help!");
+
+                }
+
                 else {
                 
-                    System.out.println("Input: " + stmt.deviceNode.object.value + " " + stmt.actionNode.actionToken.value + " " + stmt.objectNode.object.value + " " + stmt.objectNameNode.name.value);
+                    System.out.println("Input: " + stmt.deviceNode.object.value + " " + stmt.actionNode.actionToken.value + " " + stmt.deviceName.name.value + " " + stmt.objectNode.object.value + " " + stmt.objectNameNode.name.value);
                 
                 }
             }

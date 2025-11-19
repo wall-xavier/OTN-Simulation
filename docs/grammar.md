@@ -6,10 +6,13 @@ $$
     [\text{Statement}] &\to
 
     \begin{cases}
-        [\text{Object}] [\text{Action}] [\text{Object}] [\text{Object Name}] [\text{*Optional* Value}]\\
-        [\text{Object}] \text{ HELP} \\
-        [\text{End}] \\
+        [\text{Device}] [\text{Action}] [\text{Device Name}] [\text{Object}] [\text{Object Name}] [\text{*Optional* Value}]\\
+        [\text{Device}] \text{ HELP} \\
+        \text{HELP} \\
+        \text{END} \\
     \end{cases} \\
+
+    [\text{Device}] &\to [\text{Object}] \\
 
     [\text{Action}] &\to
 
