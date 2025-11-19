@@ -29,9 +29,26 @@ public class CommandGenerator {
     public void generator(){
 
         if(StatementNodes != null && !StatementNodes.isEmpty()){
-            System.out.println("Input: " + StatementNodes.get(0).deviceNode.object.value + " " + StatementNodes.get(0).actionNode.actionToken.value + " " + StatementNodes.get(0).objectNode.object.value + " " + StatementNodes.get(0).objectNameNode.name.value);
-        } else {
+
+            for(int i = 0; i < StatementNodes.size(); i++){
+            
+                StatementNode stmt = StatementNodes.get(i);
+            
+                if(stmt.type == StatementNode.types.HELP){
+            
+                    System.out.println("Input: " + stmt.deviceNode.object.value + " HELP");
+                } 
+                else {
+                
+                    System.out.println("Input: " + stmt.deviceNode.object.value + " " + stmt.actionNode.actionToken.value + " " + stmt.objectNode.object.value + " " + stmt.objectNameNode.name.value);
+                
+                }
+            }
+        }
+        else {
+        
             System.out.println("No statements parsed.");
+        
         }
 
     }

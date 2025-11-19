@@ -55,6 +55,7 @@ public class Tokenizer {
             switch (value) {
                 case "ROADM", "WSS", "PORT", "TRANSPONDER_CARD", "TRANSPONDER", "FIBER" -> tokens.add(new Token(Token.types.OBJECT, value));
                 case "ADD", "MODIFY", "REMOVE" , "CREATE" -> tokens.add(new Token(Token.types.ACTION, value));
+                case "HELP" -> tokens.add(new Token(Token.types.HELP, value));
                 default -> tokens.add(new Token(Token.types.VALUE, value));
             }
             

@@ -17,7 +17,8 @@ public class Token{
     public enum types {
         ACTION,
         OBJECT,
-        VALUE};
+        VALUE,
+        HELP};
 
     public types type;
     public String value;

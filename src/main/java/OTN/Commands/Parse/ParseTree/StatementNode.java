@@ -19,6 +19,13 @@ public class StatementNode {
     public ObjectNode objectNode;
     public ObjectNameNode objectNameNode;
     public ValueNode valueNode;
+    
+    public static enum types{
+        STATEMENT,
+        HELP;
+    }
+
+    public types type;
 
     public StatementNode(ObjectNode device, ActionNode action, ObjectNode object, ObjectNameNode name, ValueNode val){
 
@@ -32,11 +39,19 @@ public class StatementNode {
 
     public StatementNode(ObjectNode device, ActionNode action, ObjectNode object, ObjectNameNode name){
 
+        type = types.STATEMENT;
         deviceNode = device;
         actionNode = action;
         objectNode = object;
         objectNameNode = name;
         valueNode = null;
+
+    }
+
+    public StatementNode(ObjectNode device){
+
+        deviceNode = device;
+        type = types.HELP;
 
     }
 

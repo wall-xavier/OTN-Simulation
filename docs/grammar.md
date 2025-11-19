@@ -7,6 +7,7 @@ $$
 
     \begin{cases}
         [\text{Object}] [\text{Action}] [\text{Object}] [\text{Object Name}] [\text{*Optional* Value}]\\
+        [\text{Object}] \text{ HELP} \\
         [\text{End}] \\
     \end{cases} \\
 

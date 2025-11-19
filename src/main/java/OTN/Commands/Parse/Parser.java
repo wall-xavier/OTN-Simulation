@@ -112,29 +112,48 @@ public class Parser {
                 deviceNode = parseObject();
             }
             
-            if(peek() != null && peek().type == Token.types.ACTION){
-                actionNode = parseAction();
-            }
-            
-            if(peek() != null && peek().type == Token.types.OBJECT){
-                objectNode = parseObject();
-            }
-            
-            if(peek() != null && peek().type == Token.types.VALUE){
-                objectName = parseObjectName();
-            }
-            
-            if(peek() != null && peek().type == Token.types.VALUE){
-                value = parseValue();
-            }
-            
-            if(deviceNode != null && actionNode != null && objectNode != null && objectName != null){
-                if(value != null){
-                    statementNodes.add(new StatementNode(deviceNode, actionNode, objectNode, objectName, value));
-                } else {
-                    statementNodes.add(new StatementNode(deviceNode, actionNode, objectNode, objectName));
+        
+            if(peek() != null && peek().type == Token.types.HELP){
+                
+                consume(); 
+                
+                if(deviceNode != null){
+                    statementNodes.add(new StatementNode(deviceNode));
                 }
-            } else {
+            }
+
+            else if(peek() != null && peek().type == Token.types.ACTION){
+                actionNode = parseAction();
+                
+                if(peek() != null && peek().type == Token.types.OBJECT){
+                    objectNode = parseObject();
+                }
+                
+                if(peek() != null && peek().type == Token.types.VALUE){
+                    objectName = parseObjectName();
+                }
+                
+                if(peek() != null && peek().type == Token.types.VALUE){
+                    value = parseValue();
+                }
+                
+                if(deviceNode != null && actionNode != null && objectNode != null && objectName != null){
+                        if(value != null){
+                            statementNodes.add(new StatementNode(deviceNode, actionNode, objectNode, objectName, value));
+                        } else {
+                            statementNodes.add(new StatementNode(deviceNode, actionNode, objectNode, objectName));
+                        }
+                    } else if(deviceNode != null) {
+                        statementNodes.add(new StatementNode(deviceNode));
+                    } else {
+    
+                        if(peek() != null) {
+                            consume();
+                        }
+                    }
+            }
+            else {
+ 
                 if(peek() != null) {
                     consume();
                 }
