@@ -35,10 +35,6 @@ $$
         [\text{Fiber}] \\
     \end{cases} \\
 
-    [\text{Object Name}] &\to String \\
-
-    [\text{*Optional* Value}] &\to String \\
-
     [\text{FIELD}] &\to
     
     \begin{cases}
@@ -54,6 +50,10 @@ $$
         [\text{WAVELENGTH}] \\
         [\text{FREQUENCY}] \\
     \end{cases}\\
+
+    [\text{Object Name}] &\to String \\
+
+    [\text{*Optional* Value}] &\to String \\
 
 \end{align}
 $$
