@@ -10,8 +10,8 @@ You should have received a copy of the GNU General Public License along with OTN
 
 */
 
-package OTN.Simulation.Assets.Cards.WSS.Assets;
-import OTN.Simulation.Assets.Cards.Transponder.Assets.Transponder;
+package OTN.System.Devices.Cards.WSS.Assets;
+import OTN.System.Devices.Cards.Transponder.Assets.Transponder;
 public class WSSPort {
     
     String portSite;

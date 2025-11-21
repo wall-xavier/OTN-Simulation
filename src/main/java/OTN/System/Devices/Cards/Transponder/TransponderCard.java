@@ -10,40 +10,30 @@ You should have received a copy of the GNU General Public License along with OTN
 
 */
 
-package OTN.Simulation.Assets.Light;
-import OTN.Simulation.Assets.Cards.Transponder.Assets.Transponder;
-public class Fiber {
+package OTN.System.Devices.Cards.Transponder;
+import OTN.System.Devices.Cards.Transponder.Assets.Transponder;
+
+public class TransponderCard {
     
-    double length;
-    final double ATTENUATION = .2;
-    String label;
-    Transponder ASide;
-    Transponder ZSide;
+    int portCount;
+    Transponder [] ports;
 
-    public Fiber(double len, String lb, Transponder A, Transponder Z){
+    public TransponderCard(int portCount){
 
-        length = len;
-        label = lb;
-        ASide = A;
-        ZSide = Z;
-    }
-
-    public String getLabel(){
+        this.portCount = portCount;
+        this.ports = new Transponder [portCount];
         
-        return label;
+        for(int i = 0; i < ports.length; i++){
+        
+            ports[i] = new Transponder(1000, true, 2);
 
+        }
     }
 
-    public double getLength(){
+    public Transponder getPort(int index){
 
-        return length;
+        return ports[index];
 
-    }
-
-    public void attenuateLight(Photons light){
-
-        light.setPhotonResultantPower((light.getPhotonTXPower() * ATTENUATION));
-    
     }
 
 }

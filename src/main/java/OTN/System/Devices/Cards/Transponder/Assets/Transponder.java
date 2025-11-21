@@ -10,7 +10,7 @@ You should have received a copy of the GNU General Public License along with OTN
 
 */
 
-package OTN.Simulation.Assets.Cards.Transponder.Assets;
+package OTN.System.Devices.Cards.Transponder.Assets;
 
 public class Transponder {
     

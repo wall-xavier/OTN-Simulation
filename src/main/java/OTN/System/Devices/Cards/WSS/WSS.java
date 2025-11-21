@@ -10,9 +10,9 @@ You should have received a copy of the GNU General Public License along with OTN
 
 */
 
-package OTN.Simulation.Assets.Cards.WSS;
-import OTN.Simulation.Assets.Cards.Transponder.TransponderCard;
-import OTN.Simulation.Assets.Cards.WSS.Assets.WSSPort;
+package OTN.System.Devices.Cards.WSS;
+import OTN.System.Devices.Cards.Transponder.TransponderCard;
+import OTN.System.Devices.Cards.WSS.Assets.WSSPort;
 public class WSS{
 
     // Optical WSS Constants
