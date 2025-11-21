@@ -20,6 +20,7 @@ public class StatementNode {
     public ObjectNode objectNode;
     public ObjectNameNode objectNameNode;
     public ValueNode valueNode;
+    public FieldNode fieldNode;
     
     public static enum types{
         STATEMENT,
@@ -64,5 +65,18 @@ public class StatementNode {
         this.type = type;
 
     }
+
+  
+    public StatementNode(ObjectNode device, ActionNode action, ObjectNameNode name, FieldNode field, ValueNode value){
+
+        deviceNode = device;
+        actionNode = action;
+        deviceName = name;
+        fieldNode = field;
+        valueNode = value;
+
+    }
+  
+    //Device][Device Name][Action][Field][Value
 
 }

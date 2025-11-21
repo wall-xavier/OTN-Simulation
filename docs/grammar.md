@@ -7,6 +7,7 @@ $$
 
     \begin{cases}
         [\text{Device}] [\text{Action}] [\text{Device Name}] [\text{Object}] [\text{Object Name}] [\text{*Optional* Value}]\\
+        [\text{Device}] [\text{Device Name}] [\text{Action}] [\text{Field}] [\text{Value}] \\
         [\text{Device}] \text{ HELP} \\
         \text{HELP} \\
         \text{END} \\
@@ -20,6 +21,8 @@ $$
         [\text{Add}] \\
         [\text{Remove}] \\
         [\text{Modify}] \\
+        [\text{Set}] \\
+        [\text{CREATE}]
     \end{cases}\\
 
     [\text{Object}] &\to
@@ -36,5 +39,21 @@ $$
 
     [\text{*Optional* Value}] &\to String \\
 
-    \end{align}
+    [\text{FIELD}] &\to
+    
+    \begin{cases}
+        [\text{SPEED}] \\
+        [\text{DUPLEX}] \\ 
+        [\text{TX\_POWER}] \\
+        [\text{PORT\_COUNT}] \\ 
+        [\text{LABEL}] \\
+        [\text{PORT\_INDEX}] \\
+        [\text{LENGTH}] \\
+        [\text{A\_SIDE}] \\
+        [\text{Z\_SIDE}] \\
+        [\text{WAVELENGTH}] \\
+        [\text{FREQUENCY}] \\
+    \end{cases}\\
+
+\end{align}
 $$

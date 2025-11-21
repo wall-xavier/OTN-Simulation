@@ -96,6 +96,23 @@ public class Parser {
         }
     }
 
+        public FieldNode parseField(){
+
+        if(peek() != null && peek().type == Token.types.FIELD){
+
+            FieldNode fieldNode = new FieldNode(consume());
+
+            return fieldNode;
+
+        }
+
+        else{
+
+            return null;
+
+        }
+    }
+
     public List<StatementNode> parse(){
 
         List<StatementNode> statementNodes = new ArrayList<>();
@@ -108,6 +125,7 @@ public class Parser {
             ObjectNode objectNode = null;
             ObjectNameNode objectName = null;
             ValueNode value = null;
+            FieldNode field = null;
 
             if(peek() != null && peek().type == Token.types.OBJECT){
                 deviceNode = parseObject();
@@ -144,12 +162,18 @@ public class Parser {
                 if(peek() != null && peek().type == Token.types.VALUE){
                     value = parseValue();
                 }
+                if(peek() != null && peek().type == Token.types.FIELD){
+                    field = parseField();
+                }
                 
                 if(deviceNode != null && actionNode != null && objectNode != null && objectName != null){
                         if(value != null){
                             statementNodes.add(new StatementNode(deviceNode, actionNode, deviceName, objectNode, objectName, value));
                         } else {
                             statementNodes.add(new StatementNode(deviceNode, actionNode, deviceName, objectNode, objectName));
+                        }
+                        if(field != null){
+                            statementNodes.add(new StatementNode(deviceNode, actionNode, deviceName, field, value));
                         }
                     }
                     

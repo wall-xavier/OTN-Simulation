@@ -10,30 +10,17 @@ You should have received a copy of the GNU General Public License along with OTN
 
 */
 
-package OTN.Commands.Tokens;
+package OTN.Commands.Parse.ParseTree;
+import OTN.Commands.Tokens.Token;
 
-public class Token{
-
-    public enum types {
-        ACTION,
-        OBJECT,
-        VALUE,
-        FIELD,
-        HELP};
-
-    public types type;
-    public String value;
-
-    public Token(types type, String value){
-
-        this.type = type;
-        this.value = value;
-    }
-
-    @Override
-    public String toString() {
-
-        return "[" + type + ": \"" + value + "\"]\n";
+public class FieldNode {
     
+    public Token field;
+
+    public FieldNode(Token field){
+
+        this.field = field;
+
     }
+
 }
