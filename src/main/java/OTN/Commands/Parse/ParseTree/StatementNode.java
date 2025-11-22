@@ -66,10 +66,14 @@ public class StatementNode {
 
     }
 
-    // General Help
     public StatementNode(types type){
 
-        this.type = type;
+        // General Help
+        if (type == types.HELP){
+
+            this.type = types.HELP;
+
+        }
 
     }
 

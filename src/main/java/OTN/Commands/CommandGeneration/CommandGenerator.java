@@ -27,26 +27,23 @@ public class CommandGenerator {
 
     }
 
-    public void generator(){
+    public StringBuilder generator(){
 
-        ROADM exampleROADM = null;
+        StringBuilder outputs = new StringBuilder();
 
         if(StatementNodes != null && !StatementNodes.isEmpty()){
 
             for(int i = 0; i < StatementNodes.size(); i++){
             
                 StatementNode stmt = StatementNodes.get(i);
-            
-                if(stmt.type == StatementNode.types.INIT){
-            
-                    if(stmt.deviceNode.object.value.equals("ROADM")){
 
-                        exampleROADM = new ROADM(stmt.deviceName.name.value);
+                switch(stmt.type){
 
-                    }
-                
+                    case StatementNode.types.HELP -> outputs.append(helpCommandGenerate());
+                    case StatementNode.types.INIT -> outputs.append(initCommandGenerate(stmt));
+                    default -> outputs.append("Unable to generate commands!");
                 }
-
+            
             }
 
         }
@@ -56,17 +53,32 @@ public class CommandGenerator {
         
         }
 
-        if (exampleROADM != null){
+        return outputs;
 
-            System.out.println(exampleROADM.getName());
+    }
 
-        }
+    public StringBuilder initCommandGenerate(StatementNode stmt){
 
-        else{
+        ROADM ROADMNode;
+        StringBuilder output = new StringBuilder();
 
-            System.out.println("Unable to generate ROADM.");
+        if(stmt.deviceNode.object.value.equals("ROADM")){
 
-        }
+            ROADMNode = new ROADM(stmt.deviceName.name.value);
 
+            output.append("Created ROADM: ");
+            output.append(ROADMNode.getName());
+            output.append("\n\n");
+        }  
+        
+        return output;
+    }
+
+    public StringBuilder helpCommandGenerate(){
+
+        StringBuilder output = new StringBuilder();
+        output.append("Displaying General Help Information!");
+        output.append("\n\n");
+        return output;
     }
 }

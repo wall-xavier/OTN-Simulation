@@ -28,12 +28,14 @@ public class Boot {
 
     public Boot(){
         
-        String config = loadConfig();
+        config = loadConfig();
         List<Token> tokens = TokenizeConfig(config);
         Parser parser = new Parser(tokens);
         List<StatementNode> tree = parser.parse();
         CommandGenerator generate = new CommandGenerator(tree);
-        generate.generator();
+        StringBuilder output = generate.generator();
+
+        System.out.println(output.toString());
 
     }
 
