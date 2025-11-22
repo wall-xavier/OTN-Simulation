@@ -92,10 +92,50 @@ public class ROADM {
 
     }
 
-    public String getROADMName(){
+    public String getName(){
 
         return name;
 
     }
     
+    public StringBuilder listAllAttributes(){
+
+        StringBuilder sb = new StringBuilder();
+        
+        sb.append("ROADM ");
+        sb.append(name);
+        sb.append( " has been assigned WSS ");
+
+        for(int i = 0; i < wssList.size(); i++){
+
+            sb.append(wssList.get(i).getName());
+            sb.append(" ");
+
+        }
+
+        sb.append(", Transponder Line Side Card(s)");
+
+         for(int i = 0; i < lineTransponderCards.size(); i++){
+
+            sb.append(lineTransponderCards.get(i).getName());
+            sb.append(" ");
+
+        }
+        
+        sb.append(", and Transponder Client Side Card(s)");
+
+        for(int i = 0; i < clientTransponderCards.size(); i++){
+
+            sb.append(clientTransponderCards.get(i).getName());
+            sb.append(" ");
+
+        }
+
+
+
+
+        return sb;
+
+    }
+
 }

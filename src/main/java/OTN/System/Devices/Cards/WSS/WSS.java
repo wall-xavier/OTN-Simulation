@@ -15,6 +15,8 @@ import OTN.System.Devices.Cards.Transponder.TransponderCard;
 import OTN.System.Devices.Cards.WSS.Assets.WSSPort;
 public class WSS{
 
+    String name;
+
     // Optical WSS Constants
     final int C_BAND_CENTER_NM = 1550;
     final int GRATING_LINES_PER_MM = 500;
@@ -38,7 +40,10 @@ public class WSS{
     private final int centerPortNumber; 
 
     // Set amount of ports and port names
-    public WSS(String[] toSetSites, int portNum){
+    public WSS(String name, String[] toSetSites, int portNum){
+
+        this.name = name; 
+
         if (portNum < 1 || toSetSites.length != portNum) {
             throw new IllegalArgumentException("Port count must be positive and match the site array length.");
         }
@@ -46,7 +51,7 @@ public class WSS{
         sites = toSetSites;
         centerPortNumber = (portNum + 1) / 2;
         // Map Transponders to the WSS port
-        TransponderCard mappedCard = new TransponderCard(portCount);
+        TransponderCard mappedCard = new TransponderCard("Example", portCount);
         WSSPort [] ports = new WSSPort[portCount];
         for(int i = 0; i < portCount; i++){
 
@@ -180,4 +185,9 @@ public class WSS{
         return requiredPhaseRampPerPixel;
     }
 
+    public String getName(){
+
+        return name;
+
+    }
 }

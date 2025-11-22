@@ -13,6 +13,7 @@ You should have received a copy of the GNU General Public License along with OTN
 package OTN.Commands.CommandGeneration;
 
 import OTN.Commands.Parse.ParseTree.StatementNode;
+import OTN.System.Devices.Nodes.ROADM.ROADM;
 import java.util.List;
 
 
@@ -28,34 +29,43 @@ public class CommandGenerator {
 
     public void generator(){
 
+        ROADM exampleROADM = null;
+
         if(StatementNodes != null && !StatementNodes.isEmpty()){
 
             for(int i = 0; i < StatementNodes.size(); i++){
             
                 StatementNode stmt = StatementNodes.get(i);
             
-                if(stmt.type == StatementNode.types.HELP && stmt.deviceNode != null){
+                if(stmt.type == StatementNode.types.INIT){
             
-                    System.out.println("Input: " + stmt.deviceNode.object.value + " HELP");
-                }
+                    if(stmt.deviceNode.object.value.equals("ROADM")){
 
-                else if(stmt.type == StatementNode.types.HELP){
+                        exampleROADM = new ROADM(stmt.deviceName.name.value);
 
-                    System.out.println("Displaying General Help!");
-
-                }
-
-                else {
-                
-                    System.out.println("Input: " + stmt.deviceNode.object.value + " " + stmt.actionNode.actionToken.value + " " + stmt.deviceName.name.value + " " + stmt.objectNode.object.value + " " + stmt.objectNameNode.name.value);
+                    }
                 
                 }
+
             }
+
         }
         else {
         
             System.out.println("No statements parsed.");
         
+        }
+
+        if (exampleROADM != null){
+
+            System.out.println(exampleROADM.getName());
+
+        }
+
+        else{
+
+            System.out.println("Unable to generate ROADM.");
+
         }
 
     }

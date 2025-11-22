@@ -166,28 +166,28 @@ public class Parser {
                     field = parseField();
                 }
                 
-                if(deviceNode != null && actionNode != null && objectNode != null && objectName != null){
-                        if(value != null){
+                if(deviceNode != null && actionNode != null && deviceName != null && objectNode != null && objectName != null){
+                        if(value != null && field == null){
                             statementNodes.add(new StatementNode(deviceNode, actionNode, deviceName, objectNode, objectName, value));
                         } else {
                             statementNodes.add(new StatementNode(deviceNode, actionNode, deviceName, objectNode, objectName));
                         }
-                        if(field != null){
+                        if(field != null && value != null){
                             statementNodes.add(new StatementNode(deviceNode, actionNode, deviceName, field, value));
                         }
                     }
+
+                if(actionNode != null && actionNode.actionToken.value.equals("CREATE")){
+
+                    statementNodes.add(new StatementNode(deviceNode, actionNode, deviceName));
+
+                }
                     
-                    else {
+                else {
     
-                        if(peek() != null) {
-                            consume();
-                        }
+                    if(peek() != null) {
+                        consume();
                     }
-            }
-            else {
- 
-                if(peek() != null) {
-                    consume();
                 }
             }
             

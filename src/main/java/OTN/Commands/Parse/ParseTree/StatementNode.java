@@ -23,15 +23,19 @@ public class StatementNode {
     public FieldNode fieldNode;
     
     public static enum types{
-        STATEMENT,
+        ASSIGN_VALUE,
+        ASSIGN,
+        SET_VALUES,
+        INIT,
         HELP;
     }
 
     public types type;
 
+    // Assigning devices to other devices, with optional value
     public StatementNode(ObjectNode device, ActionNode action, ObjectNameNode devName, ObjectNode object, ObjectNameNode name, ValueNode val){
 
-        type = types.STATEMENT;
+        type = types.ASSIGN_VALUE;
         deviceNode = device;
         actionNode = action;
         deviceName = devName;
@@ -41,9 +45,10 @@ public class StatementNode {
 
     }
 
+    // Assigning devices to other devices
     public StatementNode(ObjectNode device, ActionNode action, ObjectNameNode devName, ObjectNode object, ObjectNameNode name){
 
-        type = types.STATEMENT;
+        type = types.ASSIGN;
         deviceNode = device;
         actionNode = action;
         deviceName = devName;
@@ -53,6 +58,7 @@ public class StatementNode {
 
     }
 
+    // Help for Devices
     public StatementNode(ObjectNode device, types type){
 
         deviceNode = device;
@@ -60,13 +66,14 @@ public class StatementNode {
 
     }
 
+    // General Help
     public StatementNode(types type){
 
         this.type = type;
 
     }
 
-  
+    // Setting values on certain devices
     public StatementNode(ObjectNode device, ActionNode action, ObjectNameNode name, FieldNode field, ValueNode value){
 
         deviceNode = device;
@@ -74,9 +81,18 @@ public class StatementNode {
         deviceName = name;
         fieldNode = field;
         valueNode = value;
+        type = types.SET_VALUES;
 
     }
-  
-    //Device][Device Name][Action][Field][Value
+
+    // Initialize a device
+    public StatementNode(ObjectNode device, ActionNode action, ObjectNameNode name){
+
+        deviceNode = device;
+        actionNode = action;
+        deviceName = name;
+        type = types.INIT;
+
+    }
 
 }

@@ -17,9 +17,11 @@ public class TransponderCard {
     
     int portCount;
     Transponder [] ports;
+    String name;
 
-    public TransponderCard(int portCount){
+    public TransponderCard(String name, int portCount){
 
+        this.name = name;
         this.portCount = portCount;
         this.ports = new Transponder [portCount];
         
@@ -33,6 +35,12 @@ public class TransponderCard {
     public Transponder getPort(int index){
 
         return ports[index];
+
+    }
+
+    public String getName(){
+
+        return name;
 
     }
 

@@ -221,7 +221,7 @@ public class WSS_Simulation extends JFrame {
             }
             
             // 1. Create WSS object
-            demoWSS = new WSS(sites, portCount);
+            demoWSS = new WSS("Example", sites, portCount);
 
             // 2. Run simulation and show results
             showResults(destinationPort);
