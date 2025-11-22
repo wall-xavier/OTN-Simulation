@@ -39,7 +39,7 @@ public class Boot {
 
     }
 
-    public String loadConfig(){
+    public final String loadConfig(){
 
         try{
         
@@ -55,7 +55,7 @@ public class Boot {
         return config;
     }
 
-    public List <Token> TokenizeConfig(String preToken){
+    public final List <Token> TokenizeConfig(String preToken){
 
         Tokenizer toTokenize = new Tokenizer(preToken);
 
