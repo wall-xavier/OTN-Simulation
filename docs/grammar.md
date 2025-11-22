@@ -7,8 +7,9 @@ $$
 
     \begin{cases}
         [\text{Device}] [\text{Action}] [\text{Device Name}] [\text{Object}] [\text{Object Name}] [\text{*Optional* Value}]\\
-        [\text{Device}] [\text{Device Name}] [\text{Action}] [\text{Field}] [\text{Value}] \\
-        [\text{Device}] \text{ HELP} \\
+        [\text{Device}] [\text{Action}] [\text{Device Name}] [\text{Field}] [\text{Value}] \\
+        [\text{Device}] [\text{CREATE}] [\text{Device\_Name}] \\ 
+        [\text{Device}] \text{ Help} \\
         \text{HELP} \\
         \text{END} \\
     \end{cases} \\
@@ -18,11 +19,11 @@ $$
     [\text{Action}] &\to
 
     \begin{cases}
-        [\text{Add}] \\
-        [\text{Remove}] \\
-        [\text{Modify}] \\
-        [\text{Set}] \\
-        [\text{CREATE}]
+        \text{ADD} \\
+        \text{REMOVE} \\
+        \text{MODIFY} \\
+        \text{SET} \\
+        \text{CREATE}
     \end{cases}\\
 
     [\text{Object}] &\to
