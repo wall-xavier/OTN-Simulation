@@ -49,7 +49,7 @@ public class CommandGenerator {
         }
         else {
         
-            System.out.println("No statements parsed.");
+            System.out.println("No nodes");
         
         }
 
